@@ -5,6 +5,8 @@ class LoginPage extends StatelessWidget {
   final TextEditingController emailCtrl = TextEditingController();
   final TextEditingController passCtrl = TextEditingController();
 
+  LoginPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,8 +18,10 @@ class LoginPage extends StatelessWidget {
               children: [
                 Icon(Icons.lock, color: AppColors.primary, size: 80),
                 const SizedBox(height: 20),
-                Text("Iniciar Sesión",
-                    style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
+                Text(
+                  "Iniciar Sesión",
+                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                ),
                 const SizedBox(height: 20),
                 TextField(
                   controller: emailCtrl,

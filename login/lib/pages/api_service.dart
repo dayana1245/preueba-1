@@ -7,8 +7,8 @@ import 'package:http/http.dart' as http;
 class ApiService {
   // URL de tu Flask API
   // quitar la barra final para evitar '//' accidental al concatenar
-  static const String baseUrl = 'http://192.168.0.4:5000';
-  
+  static const String baseUrl = 'http://10.215.221.252:5000';
+
   // REGISTRO
   static Future<Map<String, dynamic>> signup({
     required String email,
@@ -18,16 +18,16 @@ class ApiService {
     try {
       final response = await http
           .post(
-        // ruta del servidor Flask según tus logs
-        Uri.parse('$baseUrl/api/usuarios/registro'),
-        headers: {'Content-Type': 'application/json'},
-        body: json.encode({
-          // la API espera campos en español según /api/info
-          'email': email,
-          'contrasena': password,
-          'nombre': name,
-        }),
-      )
+            // ruta del servidor Flask según tus logs
+            Uri.parse('$baseUrl/api/usuarios/registro'),
+            headers: {'Content-Type': 'application/json'},
+            body: json.encode({
+              // la API espera campos en español según /api/info
+              'email': email,
+              'contrasena': password,
+              'nombre': name,
+            }),
+          )
           // evita waits indefinidos
           .timeout(const Duration(seconds: 10));
 
@@ -41,7 +41,9 @@ class ApiService {
       // debug: log response body/status in debug mode to help troubleshooting
       if (kDebugMode) {
         try {
-          print('ApiService.signup -> ${response.statusCode}: ${response.body}');
+          print(
+            'ApiService.signup -> ${response.statusCode}: ${response.body}',
+          );
         } catch (_) {}
       }
 
@@ -71,7 +73,7 @@ class ApiService {
       };
     }
   }
-  
+
   // LOGIN
   static Future<Map<String, dynamic>> login({
     required String email,
@@ -80,14 +82,14 @@ class ApiService {
     try {
       final response = await http
           .post(
-        Uri.parse('$baseUrl/api/usuarios/login'),
-        headers: {'Content-Type': 'application/json'},
-        body: json.encode({
-          // la API espera 'contrasena' en lugar de 'password'
-          'email': email,
-          'contrasena': password,
-        }),
-      )
+            Uri.parse('$baseUrl/api/usuarios/login'),
+            headers: {'Content-Type': 'application/json'},
+            body: json.encode({
+              // la API espera 'contrasena' en lugar de 'password'
+              'email': email,
+              'contrasena': password,
+            }),
+          )
           .timeout(const Duration(seconds: 10));
 
       dynamic data;
@@ -128,7 +130,7 @@ class ApiService {
       };
     }
   }
-  
+
   // WELCOME
   static Future<Map<String, dynamic>> getWelcome({
     required String email,
@@ -136,10 +138,10 @@ class ApiService {
     try {
       final response = await http
           .get(
-  // el endpoint /api/info es informativo; no requiere email
-  Uri.parse('$baseUrl/api/info'),
-        headers: {'Content-Type': 'application/json'},
-      )
+            // el endpoint /api/info es informativo; no requiere email
+            Uri.parse('$baseUrl/api/info'),
+            headers: {'Content-Type': 'application/json'},
+          )
           .timeout(const Duration(seconds: 10));
 
       dynamic data;
@@ -151,7 +153,9 @@ class ApiService {
 
       if (kDebugMode) {
         try {
-          print('ApiService.getWelcome -> ${response.statusCode}: ${response.body}');
+          print(
+            'ApiService.getWelcome -> ${response.statusCode}: ${response.body}',
+          );
         } catch (_) {}
       }
 

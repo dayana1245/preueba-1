@@ -5,6 +5,8 @@ class RegisterPage extends StatelessWidget {
   final TextEditingController emailCtrl = TextEditingController();
   final TextEditingController passCtrl = TextEditingController();
 
+  RegisterPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,10 +16,14 @@ class RegisterPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextField(decoration: const InputDecoration(labelText: 'Nombre completo')),
+            TextField(
+              decoration: const InputDecoration(labelText: 'Nombre completo'),
+            ),
             TextField(
               controller: emailCtrl,
-              decoration: const InputDecoration(labelText: 'Correo electrónico'),
+              decoration: const InputDecoration(
+                labelText: 'Correo electrónico',
+              ),
             ),
             TextField(
               controller: passCtrl,

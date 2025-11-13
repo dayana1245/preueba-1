@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'diary_storage.dart';
 
 class DiaryEntriesPage extends StatelessWidget {
-  const DiaryEntriesPage({Key? key}) : super(key: key);
+  const DiaryEntriesPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     final entries = DiaryStorage.getAll();
-  
+
     return Scaffold(
       appBar: AppBar(title: const Text('Entradas guardadas')),
       body: entries.isEmpty
@@ -21,7 +21,8 @@ class DiaryEntriesPage extends StatelessWidget {
                 return ListTile(
                   title: Text(e.feeling.isEmpty ? '(Sin texto)' : e.feeling),
                   subtitle: Text(
-                      'Tomó pastillas: ${e.tookPills ? 'Sí' : 'No'} · ${e.timestamp.toLocal().toString().split('.').first}'),
+                    'Tomó pastillas: ${e.tookPills ? 'Sí' : 'No'} · ${e.timestamp.toLocal().toString().split('.').first}',
+                  ),
                   trailing: e.sleepTime == null
                       ? null
                       : Text(e.sleepTime!.format(context)),

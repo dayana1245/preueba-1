@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../theme.dart';
 
 class WelcomePage extends StatelessWidget {
+  const WelcomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,7 +12,11 @@ class WelcomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.sentiment_satisfied, color: AppColors.primary, size: 100),
+            Icon(
+              Icons.sentiment_satisfied,
+              color: AppColors.primary,
+              size: 100,
+            ),
             const SizedBox(height: 20),
             Text(
               "¡Bienvenido!",

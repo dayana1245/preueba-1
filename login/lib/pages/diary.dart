@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../theme.dart';
 
 class DiaryPage extends StatefulWidget {
+  const DiaryPage({super.key});
+
   @override
   _DiaryPageState createState() => _DiaryPageState();
 }
@@ -21,8 +23,10 @@ class _DiaryPageState extends State<DiaryPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text("¿Cómo te sentiste hoy?",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              const Text(
+                "¿Cómo te sentiste hoy?",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
               TextField(
                 onChanged: (value) => setState(() => feeling = value),
                 decoration: const InputDecoration(
@@ -39,9 +43,11 @@ class _DiaryPageState extends State<DiaryPage> {
               ),
               const SizedBox(height: 20),
               ListTile(
-                title: Text(sleepTime == null
-                    ? "Seleccionar hora de sueño"
-                    : "Hora de sueño: ${sleepTime!.format(context)}"),
+                title: Text(
+                  sleepTime == null
+                      ? "Seleccionar hora de sueño"
+                      : "Hora de sueño: ${sleepTime!.format(context)}",
+                ),
                 trailing: const Icon(Icons.bedtime),
                 onTap: () async {
                   final picked = await showTimePicker(
@@ -61,7 +67,8 @@ class _DiaryPageState extends State<DiaryPage> {
                   onPressed: () {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
-                          content: Text("Registro guardado (modo demo)")),
+                        content: Text("Registro guardado (modo demo)"),
+                      ),
                     );
                   },
                   child: const Text("Guardar entrada"),
